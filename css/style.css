@@ -694,3 +694,103 @@ footer a:hover {
         justify-content: center; /* Center logos on smaller screens */
     }
 }
+
+/* --- Page Banner Section (replaces .page-title) --- */
+.page-banner {
+    position: relative;
+    width: 100%;
+    height: 40vh; /* Adjust height as needed, e.g., 300px, 400px, or 40vh */
+    min-height: 280px; /* Minimum height */
+    max-height: 450px; /* Maximum height */
+    overflow: hidden; /* Ensures text overlay doesn't spill if image is smaller */
+    background-color: #333; /* Fallback color if images don't load */
+    margin-bottom: 0; /* Remove default section padding/margin if any */
+    padding: 0; /* Remove default section padding */
+}
+
+.page-banner .bannerImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.page-banner .bannerImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Covers the area, might crop */
+    object-position: center; /* Center the image */
+}
+
+.page-banner .bannerImage .sm-banner {
+    display: none; /* Hidden by default */
+}
+
+.page-banner .bannerText-container {
+    position: relative; /* To allow z-index stacking and contain the absolute text */
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    align-items: center; /* Vertically center text block */
+    justify-content: left; /* Horizontally center text block */
+    text-align: center;
+    padding: 20px; /* Padding for the text container */
+    background: rgba(0, 25, 51, 0.5); /* Dark semi-transparent overlay for text readability */
+}
+
+.page-banner .bannerText {
+    color: #fff;
+    max-width: 800px; /* Max width for the text block */
+}
+
+.page-banner .bannerText h1 {
+    font-size: 2.8em; /* Large title */
+    font-weight: 700;
+    margin-bottom: 10px;
+    line-height: 1.2;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Deeper shadow for better contrast */
+    color: #fff; /* Ensure h1 color is white */
+}
+
+.page-banner .bannerText h2 {
+    font-size: 1.3em; /* Subtitle size */
+    font-weight: 400;
+    line-height: 1.5;
+    opacity: 0.9; /* Slightly less prominent subtitle */
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+    color: #fff; /* Ensure h2 color is white */
+}
+
+/* Responsive Banner Images */
+@media (max-width: 768px) {
+    .page-banner {
+        height: 35vh; /* Adjust height for mobile */
+        min-height: 220px;
+    }
+
+    .page-banner .bannerImage .lg-banner {
+        display: none; /* Hide large banner on small screens */
+    }
+    .page-banner .bannerImage .sm-banner {
+        display: block; /* Show small banner on small screens */
+    }
+
+    .page-banner .bannerText h1 {
+        font-size: 2.2em; /* Adjust title size for mobile */
+    }
+
+    .page-banner .bannerText h2 {
+        font-size: 1.1em; /* Adjust subtitle size for mobile */
+    }
+}
+
+/* Remove margin from the first section immediately following a page-banner */
+.page-banner + section {
+    margin-top: 0;
+    padding-top: 60px; /* Add padding to the top of the first content section */
+}
+.page-banner + section .container:first-child > h3:first-child {
+    margin-top: 0; /* If the first element in the container is an h3 */
+}
