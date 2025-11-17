@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEOL JBX-8100FS 电子束光刻机 标准操作程序</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #34495e;
+            background: linear-gradient(135deg, #ecf0f1, #bdc3c7);
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 30px;
+            border-left: 5px solid #3498db;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 5px;
+            margin-top: 25px;
+            border-left: 4px solid #95a5a6;
+        }
+        
+        h4 {
+            color: #34495e;
+            margin-top: 20px;
+            padding: 8px 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: #fafafa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .important {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 5px solid #fdcb6e;
+        }
+        
+        .warning {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 5px solid #e17055;
+        }
+        
+        .note {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 5px solid #74b9ff;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        tr:hover {
+            background-color: #e8f4f8;
+        }
+        
+        .toc {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .toc li {
+            margin: 8px 0;
+            padding: 5px 0;
+        }
+        
+        .toc a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .toc a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+        
+        .code {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .parameter {
+            background: #e8f4f8;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 3px solid #74b9ff;
+        }
+        
+        .step {
+            background: #f0f8ff;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .step-number {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                margin: 10px;
+            }
+            
+            table {
+                font-size: 14px;
+            }
+            
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>JEOL JBX-8100FS 电子束光刻机<br>标准操作程序 (SOP)</h1>
+        
+        <div class="toc">
+            <h2>目录</h2>
+            <ul>
+                <li><a href="#chapter3">第三章：机器操作</a></li>
+                <li><a href="#chapter4">第四章：补充资料</a></li>
+                <li><a href="#chapter5">第五章：常见问题</a></li>
+            </ul>
+        </div>
+
+        <div id="chapter3" class="section">
+            <h2>第三章：机器操作</h2>
+            
+            <h3>3.1 启动程序</h3>
+            <div class="step">
+                <div class="step-number">步骤 1：</div>
+                在 BRK Lithography Core iLab Kiosk 中启用 JBX-8100FS
+            </div>
+            <div class="step">
+                <div class="step-number">步骤 2：</div>
+                打开 jbxwriter 软件。检查是否已最小化或在其他桌面标签页中
+            </div>
+            <div class="step">
+                <div class="step-number">步骤 3：</div>
+                检查载物台上是否已有晶圆盒，或装载锁中是否有晶圆盒
+            </div>
+            <div class="step">
+                <div class="step-number">步骤 4：</div>
+                检查当前设置的条件文件；必要时更改（确保 Restore 和 DEMAG 已勾选）
+            </div>
+
+            <div class="important">
+                <strong>重要提醒：</strong> 切勿尝试打开新的 jbxwriter 实例，这可能导致工具通信问题。
+            </div>
+
+            <h3>3.2 样品安装</h3>
+            
+            <h4>3.2.1 晶圆盒使用注意事项</h4>
+            <div class="warning">
+                <strong>小心操作！</strong> 晶圆盒包含许多精密部件，本身也很敏感。它们是精密加工的，每个成本高达 30,000 美元。请轻柔操作，避免碰撞或掉落。
+            </div>
+
+            <h4>3.2.2 晶圆安装步骤</h4>
+            <div class="step">
+                <div class="step-number">1.</div> 将晶圆盒倒置放在无尘布上
+            </div>
+            <div class="step">
+                <div class="step-number">2.</div> 取下背面支架，将其正面朝上放置以确保接地针脚不受损坏
+            </div>
+            <div class="step">
+                <div class="step-number">3.</div> 对于 4" 和 6" 晶圆盒：首先将支架顶部的锁逆时针旋转约 120°
+            </div>
+            <div class="step">
+                <div class="step-number">4.</div> 用两根手指按住 V 型弹簧的边缘并旋转，直到脱离晶圆盒的悬垂部分
+            </div>
+            <div class="step">
+                <div class="step-number">5.</div> 小心地提起背面支架并将其正面朝上放在无尘布上
+            </div>
+
+            <h4>3.2.3 碎片安装</h4>
+            <div class="note">
+                <strong>注意：</strong> 使用碎片比使用晶圆更复杂。如果可能，建议使用晶圆以节省时间和成本。碎片尺寸不应小于 10mm x 10mm。
+            </div>
+
+            <h3>3.3 装载晶圆盒</h3>
+            <div class="step">
+                <div class="step-number">1.</div> 打开交换室门
+            </div>
+            <div class="step">
+                <div class="step-number">2.</div> 确保"载物台上的晶圆盒"LED灯熄灭
+            </div>
+            <div class="step">
+                <div class="step-number">3.</div> 如有需要，按住 EVAC/VENT 按钮对装载锁进行通风
+            </div>
+            <div class="step">
+                <div class="step-number">4.</div> 打开装载锁，将晶圆盒放入袋中，插入装载锁
+            </div>
+            <div class="step">
+                <div class="step-number">5.</div> 按住 LOAD/UNLOAD 按钮直到开始闪烁
+            </div>
+
+            <h3>3.4 检查样品高度</h3>
+            <div class="step">
+                <div class="step-number">1.</div> 在 jbxwriter 中设置晶圆盒类型
+            </div>
+            <div class="step">
+                <div class="step-number">2.</div> 移动到样品中心或 P 标记位置
+            </div>
+            <div class="step">
+                <div class="step-number">3.</div> 使用 HEI 按钮检查样品高度
+            </div>
+
+            <div class="warning">
+                <strong>重要：</strong> 高度必须在 ±100μm 范围内，理想情况下在 ±50μm 范围内。接近 0μm 将获得更好的写入质量。
+            </div>
+
+            <h3>3.5 材料校正</h3>
+            
+            <h4>3.5.1 非对齐曝光材料校正</h4>
+            <div class="step">
+                <div class="step-number">1.</div> 在校准页面的材料校正标签页中，点击加载按钮
+            </div>
+            <div class="step">
+                <div class="step-number">2.</div> 加载 0_currentnA.mcorrprm 文件
+            </div>
+            <div class="step">
+                <div class="step-number">3.</div> 在束流漂移子标签页中，点击"设置 BE 标记"，然后执行
+            </div>
+
+            <h4>3.5.2 对齐曝光材料校正</h4>
+            <div class="step">
+                <div class="step-number">1.</div> 使用 SEM 找到 P 标记
+            </div>
+            <div class="step">
+                <div class="step-number">2.</div> 在用户定义位置注册 P 标记
+            </div>
+            <div class="step">
+                <div class="step-number">3.</div> 加载或创建 MCORRPRM 文件
+            </div>
+            <div class="step">
+                <div class="step-number">4.</div> 确定 P 标记偏移量并更新全局标记检测偏移量
+            </div>
+
+            <h3>3.6 运行 DAILYCAL</h3>
+            <div class="note">
+                <strong>建议：</strong> 每次更换电流后 15-40 分钟运行 DAILYCAL 批量校准文件。这有助于确保获得良好的结果。
+            </div>
+
+            <div class="parameter">
+                <strong>DAILYCAL 包含：</strong>
+                <ul>
+                    <li>束流电流测量</li>
+                    <li>AE 标记检测（2次）</li>
+                    <li>静态聚焦校正</li>
+                    <li>BE 标记检测（2次）</li>
+                    <li>主偏转器校正</li>
+                    <li>子偏转器校正</li>
+                    <li>失真校正</li>
+                    <li>保存</li>
+                </ul>
+            </div>
+
+            <h3>3.7 VisualJob 和 Magazine 文件</h3>
+            <div class="step">
+                <div class="step-number">1.</div> 在 Beamer PC 上创建 V30、JDF 和 SDF 文件
+            </div>
+            <div class="step">
+                <div class="step-number">2.</div> 使用 U 盘将文件传输到 Linux PC
+            </div>
+            <div class="step">
+                <div class="step-number">3.</div> 更新 SDF 文件中的偏移量
+            </div>
+            <div class="step">
+                <div class="step-number">4.</div> 使用 SCHD GUI 或终端命令创建 MGN 文件
+            </div>
+
+            <h3>3.8 曝光</h3>
+            <div class="step">
+                <div class="step-number">1.</div> 在 jbxwriter 曝光页面中，移除队列中的所有杂志文件
+            </div>
+            <div class="step">
+                <div class="step-number">2.</div> 打开您的 MGN 文件
+            </div>
+            <div class="step">
+                <div class="step-number">3.</div> 开始曝光
+            </div>
+
+            <h3>3.9 卸载晶圆盒</h3>
+            <div class="step">
+                <div class="step-number">1.</div> 确保晶圆盒在原点位置
+            </div>
+            <div class="step">
+                <div class="step-number">2.</div> 打开交换室门
+            </div>
+            <div class="step">
+                <div class="step-number">3.</div> 按住 LOAD/UNLOAD 按钮卸载晶圆盒
+            </div>
+
+            <h3>3.10 完成工作</h3>
+            <div class="step">
+                <div class="step-number">1.</div> 为下一位用户加载电流（如需要）
+            </div>
+            <div class="step">
+                <div class="step-number">2.</div> 从晶圆盒上取下样品
+            </div>
+            <div class="step">
+                <div class="step-number">3.</div> 将晶圆盒放回塑料盒中
+            </div>
+            <div class="step">
+                <div class="step-number">4.</div> 关闭 Beamer 并注销 Beamer PC
+            </div>
+            <div class="step">
+                <div class="step-number">5.</div> 在 iLab Kiosk 中禁用 8100
+            </div>
+        </div>
+
+        <div id="chapter4" class="section">
+            <h2>第四章：补充资料</h2>
+            
+            <h3>4.1 晶圆盒窗口标识符</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>晶圆盒类型</th>
+                        <th>jbxwriter</th>
+                        <th>visualJob</th>
+                        <th>jobmaker</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>3" 晶圆</td>
+                        <td>Multi Wafer / / 3A</td>
+                        <td>Wafer / 3.0 / 3A</td>
+                        <td>MULTI / 3A/W</td>
+                    </tr>
+                    <tr>
+                        <td>3" 碎片支架</td>
+                        <td>Multi Wafer / / 3G</td>
+                        <td>Wafer / 3.0 / 3G</td>
+                        <td>MULTI / 3G/W</td>
+                    </tr>
+                    <tr>
+                        <td>2" 碎片支架 A</td>
+                        <td>Multi Wafer / / 2A</td>
+                        <td>Wafer / 2.0 / 2A</td>
+                        <td>MULTI / 2A/W</td>
+                    </tr>
+                    <tr>
+                        <td>2" 碎片支架 B</td>
+                        <td>Multi Wafer / / 2B</td>
+                        <td>Wafer / 2.0 / 2B</td>
+                        <td>MULTI / 2B/W</td>
+                    </tr>
+                    <tr>
+                        <td>4" 晶圆</td>
+                        <td>Wafer / 4.0 /</td>
+                        <td>Wafer / 4.0 / None</td>
+                        <td>WAFER / 4</td>
+                    </tr>
+                    <tr>
+                        <td>6" 晶圆</td>
+                        <td>Wafer / 6.0 /</td>
+                        <td>Wafer / 6.0 / None</td>
+                        <td>WAFER / 6</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>4.2 SEM 参数示例值</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>电流 (nA)</th>
+                        <th>亮度</th>
+                        <th>对比度</th>
+                        <th>对比度倍增器</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2</td>
+                        <td>1225</td>
+                        <td>1635</td>
+                        <td>x56</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>1975</td>
+                        <td>3590</td>
+                        <td>x1</td>
+                    </tr>
+                    <tr>
+                        <td>30</td>
+                        <td>1865</td>
+                        <td>2785</td>
+                        <td>x1</td>
+                    </tr>
+                    <tr>
+                        <td>100</td>
+                        <td>1332</td>
+                        <td>1805</td>
+                        <td>x1</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>4.3 标记位置示例</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>标记类型</th>
+                        <th>基板类型</th>
+                        <th>标记</th>
+                        <th>X</th>
+                        <th>Y</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="4">全局标记</td>
+                        <td rowspan="4">晶圆</td>
+                        <td>P</td>
+                        <td>-</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>Q</td>
+                        <td>+</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>R</td>
+                        <td>0</td>
+                        <td>+</td>
+                    </tr>
+                    <tr>
+                        <td>S</td>
+                        <td>0</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">芯片标记</td>
+                        <td rowspan="4">任意</td>
+                        <td>M1</td>
+                        <td>-</td>
+                        <td>+</td>
+                    </tr>
+                    <tr>
+                        <td>M2</td>
+                        <td>+</td>
+                        <td>+</td>
+                    </tr>
+                    <tr>
+                        <td>M3</td>
+                        <td>+</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>M4</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>4.4 标记组成示例</h3>
+            <div class="parameter">
+                <strong>剥离工艺：</strong>
+                <ul>
+                    <li>永不放入 ICP RIE 腔室的样品：50nm 金 (Au) 在 5nm 钛/铬 (Ti/Cr) 上（用于粘附）</li>
+                    <li>在 ICP RIE 系统中蚀刻：不要使用金，改用 200nm 镍 (Ni) 或 80nm 钯 (Pd)</li>
+                </ul>
+            </div>
+
+            <div class="parameter">
+                <strong>蚀刻工艺：</strong>
+                <ul>
+                    <li>深度：1μm（可以更薄，需要实验确定）</li>
+                    <li>宽度：必须 < 5μm</li>
+                    <li>深度范围：200-1000nm</li>
+                </ul>
+            </div>
+
+            <h3>4.5 标记尺寸示例</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>标记类型</th>
+                        <th>标记宽度 (X/Y)</th>
+                        <th>标记长度 (X/Y)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>全局标记 (P, Q, R, S)</td>
+                        <td>Wg = 5 μm</td>
+                        <td>Lg = 250 μm</td>
+                    </tr>
+                    <tr>
+                        <td>芯片标记 (M1, M2, M3, M4)</td>
+                        <td>Wc = 2 μm</td>
+                        <td>Lc = 150 μm</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>4.6 标记扫描参数示例</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>标记</th>
+                        <th>扫描位置 (X/Y)</th>
+                        <th>扫描宽度 (X/Y)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>P 粗扫描</td>
+                        <td>3 * Wg</td>
+                        <td>3 * Wg</td>
+                    </tr>
+                    <tr>
+                        <td>P 精扫描 (& 其他)</td>
+                        <td>50% * Lg</td>
+                        <td>3 * Wg</td>
+                    </tr>
+                    <tr>
+                        <td>Q 粗扫描</td>
+                        <td>3 * Wg</td>
+                        <td>25 * Wg</td>
+                    </tr>
+                    <tr>
+                        <td>芯片标记</td>
+                        <td>40% * Lc</td>
+                        <td>3 * Wc</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>4.7 RG 检测条件示例</h3>
+            <div class="code">
+扫描: PDEF, X→ Y, 50%*ThisMarkLength (For X & Y), 3*ThisMarkWidth (For X & Y), 1, 3, 19000
+偏移: All 0
+扫描类型: Fine, Box, Cross, ThisMarkWidth, ThisMarkLength
+增益: Don't check available, Add signal (first derivative), SEM Multiplier, SEM Contrast, SEM Brightness
+相关: Check Available, 100, 100, 100, End of Data Addition, 0, 50
+容差: Check Available, 2.5, 2.5, 2.5, 2.5, 50, 50, 50, 50
+光栅: 0.000, 1
+重试:
+  全局标记: 1, 0.5, 0.5
+  芯片标记: 10, 0.5, 0.5
+            </div>
+        </div>
+
+        <div id="chapter5" class="section">
+            <h2>第五章：常见问题</h2>
+            
+            <h3>5.1 如果我到达机器时 jbxwriter 软件未运行怎么办？</h3>
+            <div class="step">
+                <div class="step-number">1.</div> 首先验证 jbxwriter 是否只是在另一个桌面上运行，检查右下角以切换所有三个桌面
+            </div>
+            <div class="step">
+                <div class="step-number">2.</div> 如果软件确实已关闭，请使用桌面上的图标打开 jbxwriter
+            </div>
+            <div class="step">
+                <div class="step-number">3.</div> 打开后，确保左下角的"开启"图标是绿色的。如果是，软件已准备好使用
+            </div>
+            <div class="step">
+                <div class="step-number">4.</div> 如果"开启"图标是蓝色的，请联系 BNC 工作人员
+            </div>
+
+            <h3>5.2 如何检查束流是否开启？</h3>
+            <div class="step">
+                <div class="step-number">1.</div> 在 jbxwriter 中，转到 Stage Control > Fixed Position，选择'FC'并点击 MOVE
+            </div>
+            <div class="step">
+                <div class="step-number">2.</div> 在 Monitor > General 下，确保电流为 0 pA (±1 pA)
+            </div>
+            <div class="step">
+                <div class="step-number">3.</div> 如果电流非零，束流已开启。关闭它：在 Image Control 下，按 Spot 按钮
+            </div>
+            <div class="step">
+                <div class="step-number">4.</div> 再次点击 Spot 关闭束流
+            </div>
+
+            <h3>5.3 如何执行高度映射？</h3>
+            <div class="step">
+                <div class="step-number">1.</div> 转到 Calibration > Material Corr. > Height Map
+            </div>
+            <div class="step">
+                <div class="step-number">2.</div> 选择适当的 Material Type / Size / Window
+            </div>
+            <div class="step">
+                <div class="step-number">3.</div> 将芯片中心（材料坐标）输入 Offset [um]
+            </div>
+            <div class="step">
+                <div class="step-number">4.</div> 定义测量阵列：Meas. Points [point] 和 Meas. Pitch [um]
+            </div>
+            <div class="step">
+                <div class="step-number">5.</div> 确保束流关闭，点击 Execute 按钮
+            </div>
+            <div class="step">
+                <div class="step-number">6.</div> 完成后点击 Log 按钮查看结果
+            </div>
+
+            <h3>5.4 如果看到加载错误 (ebloaderd) 该怎么办？如何避免？</h3>
+            <div class="warning">
+                <strong>重要：</strong> 此错误需要工作人员干预才能清除。如果意外遇到此错误，请立即联系 Justin 或 Bill Rowe。
+            </div>
+
+            <div class="note">
+                <strong>避免方法：</strong>
+                <ul>
+                    <li>仅在 LOAD/UNLOAD 按钮亮起绿色时按下它！</li>
+                    <li>仅在"载物台上的晶圆盒"LED 灯熄灭时按下 EVAC/VENT 按钮！</li>
+                </ul>
+            </div>
+
+            <h3>5.5 如果 AE 或 BE 标记检测失败怎么办？</h3>
+            <div class="step">
+                <div class="step-number">1.</div> 转到 Calibration page → Std. Mark Detection tab
+            </div>
+            <div class="step">
+                <div class="step-number">2.</div> 在 AE Mark 子标签页，将扫描宽度从 4 改为 24
+            </div>
+            <div class="step">
+                <div class="step-number">3.</div> 在 BE Mark 子标签页，将扫描宽度从 4 改为 24
+            </div>
+            <div class="step">
+                <div class="step-number">4.</div> 点击 Execute，如果成功则点击 Save
+            </div>
+            <div class="step">
+                <div class="step-number">5.</div> 将扫描宽度改回 4，再次执行
+            </div>
+
+            <h3>5.6 如果 Beamer 显示"所有许可证都在使用中"错误怎么办？</h3>
+            <div class="note">
+                如果遇到此错误并且您已预订了设备，您有权重启 PC。这将导致其他用户丢失工作，但他们应该在第一时间保存并退出 Beamer。
+            </div>
+
+            <h3>5.7 为什么会出现与高度测量相关的 CHIPAL 错误？</h3>
+            <div class="parameter">
+                可能原因：
+                <ul>
+                    <li>虚拟标记的测量位置不在实际样品上</li>
+                    <li>位置太靠近芯片边缘或夹子</li>
+                    <li>由于安装不当或使用不正确的垫片环导致样品高度超出范围</li>
+                </ul>
+            </div>
+
+            <h3>5.8 为什么会出现"高度测量区域无效"的 CHIPAL 错误？</h3>
+            <div class="note">
+                当芯片中心位置加上芯片标记位置超出晶圆盒窗口设置的"区域"时会发生这种情况。
+            </div>
+
+            <h3>5.9 为什么束流漂移校正执行不正确？</h3>
+            <div class="warning">
+                如果出现 DRIFT 错误，说明 SOP 未正确遵循。请重新检查：
+                <ul>
+                    <li>对于非对齐写入：参见 3.5.1 非对齐曝光材料校正</li>
+                    <li>对于对齐写入：参见 3.5.2.7 对齐束流漂移</li>
+                </ul>
+            </div>
+
+            <h3>5.10 我应该在曝光前运行 DAILYCAL 吗？</h3>
+            <div class="important">
+                <strong>强烈建议：</strong> 不要跳过 DAILYCAL，它有助于确保获得良好结果：重新聚焦束流并最小化拼接和图案放置问题。
+            </div>
+
+            <div class="note">
+                唯一可以跳过的情况是：
+                <ul>
+                    <li>您当天在同一电流下已经运行过</li>
+                    <li>您确定知道并信任的人在当天早些时候对您使用的电流运行过</li>
+                </ul>
+            </div>
+
+            <h3>5.11 如果有全局标记，我可以只使用虚拟芯片标记而不进行芯片标记检测吗？</h3>
+            <div class="warning">
+                <strong>不建议：</strong> 如果您关心对齐精度，应该始终同时进行全局标记检测和芯片标记检测。芯片标记检测执行更准确的重叠算法，确保每次都有很好的对齐精度。
+            </div>
+
+            <div class="note">
+                如果您只进行全局标记检测但使用虚拟芯片标记，可能会有约 100nm 或更多的错位。
+            </div>
+        </div>
+
+        <div class="important" style="margin-top: 40px; padding: 20px; text-align: center;">
+            <strong>文档结束</strong><br>
+            如需更多信息或技术支持，请联系 BNC 工作人员。
+        </div>
+    </div>
+</body>
+</html>
